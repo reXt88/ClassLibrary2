@@ -13,36 +13,38 @@ namespace ClassLibrary2
 
         public string Owner{ get; set; }
 
-        public string Flowers{ get; set; }
-        public List<Flower> Lib = new List<Flower>();
+        public List<Flowers> fl = new List<Flowers>();
 
         public Garden(string add, string owner, string flowers)
         {
             Address = add;
             Owner = owner;
-            Flowers = flowers;
         }
 
         public void ShowAll()
         {
-            Console.WriteLine("Сад:\n" + $"Адрес: {Address}\n" + $"Владелец: {Owner}\n" + $"Цветок: {Flowers}\n");
-            
+            Console.WriteLine("Сад:\n" + $"Адрес: {Address}\n" + $"Владелец: {Owner}\nЦветы:");
+            fl.Sort();
+            foreach (Flowers f in fl )
+            {
+                f.Show();
+            }
         }
     }
     //Мартынов В.В.
-    public class Flower : IComparable
+    public class Flowers : IComparable
     {
         public string Title { get; set; }
 
         public string Description { get; set; }
-        public Flower(string t, string d)
+        public Flowers(string t, string d)
         {
             Title = t;
             Description = d;
         }
         public void Show()
         {
-            Console.WriteLine("Цветок:\n" + $"Название: {Title}\n" + $"Описание: {Description}");
+            Console.WriteLine($"Название: {Title}\n" + $"Описание: {Description}");
         }
         public int CompareTo(object obj)
         {
